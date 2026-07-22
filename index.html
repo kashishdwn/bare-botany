@@ -146,12 +146,16 @@
   .st-sign { margin-top: 26px; font-size: 0.78rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--ink-soft); font-weight: 600; }
 
   /* pinned quote break */
-  .quote-break { position: relative; z-index: 10; background: var(--clove); color: var(--parchment); padding: 160px 0; text-align: center; overflow: hidden; }
+  .quote-break { position: relative; z-index: 10; background: var(--clove); color: var(--parchment); padding: 90px 0; text-align: center; overflow: hidden; }
   .quote-break .qglow { position: absolute; width: 700px; height: 700px; left: 50%; top: 50%; transform: translate(-50%,-50%); background: radial-gradient(circle, rgba(217,150,47,0.22), transparent 62%); z-index: 0; }
   .quote-break .wrap { position: relative; z-index: 2; }
-  .quote-break blockquote { font-family: 'Fraunces', serif; font-style: italic; font-size: clamp(1.8rem, 4.4vw, 3.6rem); line-height: 1.25; max-width: 20ch; margin: 0 auto; font-weight: 300; }
+  .quote-break figure { position: relative; display: inline-block; max-width: min(90vw, 720px); margin: 0 auto; padding: 0.15em 0.7em; }
+  .quote-break blockquote { font-family: 'Fraunces', serif; font-style: italic; font-size: clamp(1.8rem, 4.4vw, 3.6rem); line-height: 1.3; margin: 0; font-weight: 300; position: relative; z-index: 2; }
   .quote-break blockquote em { color: var(--saffron-bright); }
-  .quote-break .qmark { font-family: 'Fraunces', serif; font-size: 6rem; color: var(--saffron); line-height: 0.5; margin-bottom: 10px; opacity: 0.6; }
+  /* Decorative marks flanking the quote: open upper-left, close lower-right */
+  .quote-break .qmark { position: absolute; font-family: 'Fraunces', serif; font-size: clamp(4.5rem, 9vw, 8rem); color: var(--saffron); line-height: 1; opacity: 0.55; z-index: 1; pointer-events: none; user-select: none; }
+  .quote-break .qmark-open { top: -0.28em; left: -0.32em; }
+  .quote-break .qmark-close { bottom: -0.62em; right: -0.28em; }
 
   /* ===== Section heading ===== */
   .sec-head { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 24px; margin-bottom: 60px; }
@@ -164,7 +168,7 @@
   .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; perspective: 1400px; }
   .card { background: var(--cream); border-radius: 22px; padding: 32px 30px 30px; position: relative; overflow: hidden; border: 1px solid var(--line); transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s; display: flex; flex-direction: column; transform-style: preserve-3d; }
   .card:hover { box-shadow: 0 40px 60px -30px rgba(46,29,18,0.45); }
-  .card > * { transform: translateZ(20px); }
+  .card > * { position: relative; z-index: 1; }
   .card .thumb { aspect-ratio: 1/1; border-radius: 16px; margin-bottom: 24px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; background: #F5F0E4; }
   .card .thumb svg { width: 62%; height: 62%; position: relative; z-index: 2; transition: transform 0.6s cubic-bezier(0.22,1,0.36,1); }
   .card:hover .thumb svg { transform: scale(1.08) rotate(-3deg); }
@@ -189,8 +193,11 @@
   .cta h2 em { color: var(--saffron); }
   .cta p { color: var(--ink-soft); max-width: 46ch; margin: 0 auto 44px; font-size: 1.1rem; }
   .signup { display: flex; gap: 10px; max-width: 500px; margin: 0 auto; background: var(--cream); padding: 8px; border-radius: 50px; border: 1px solid var(--line); box-shadow: 0 24px 46px -30px rgba(46,29,18,0.55); }
-  .signup input { flex-grow: 1; border: none; background: transparent; padding: 0 22px; font-family: 'Figtree', sans-serif; font-size: 1rem; color: var(--ink); outline: none; }
+  .signup input { flex-grow: 1; border: none; background: transparent; padding: 0 22px; font-family: 'Figtree', sans-serif; font-size: 1rem; color: var(--ink); outline: none; min-width: 0; }
   .signup input::placeholder { color: rgba(74,59,44,0.5); }
+  .wl-code { border: none; background: var(--parchment-deep); color: var(--ink); font-family: 'Figtree', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 0 10px 0 16px; margin-left: 6px; border-radius: 40px; cursor: pointer; outline: none; flex-shrink: 0; align-self: stretch; -webkit-appearance: none; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%234A3B2C' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 30px; transition: background-color 0.3s; }
+  .wl-code:hover { background-color: var(--parchment); }
+  .wl-code[hidden] { display: none; }
   .signup button { border: none; background: var(--clove); color: var(--parchment); padding: 15px 30px; border-radius: 50px; font-family: 'Figtree', sans-serif; font-weight: 600; font-size: 0.9rem; cursor: pointer; letter-spacing: 0.04em; transition: background 0.3s; }
   .signup button:hover { background: var(--saffron); }
   .cta .note { margin-top: 18px; font-size: 0.82rem; color: var(--ink-soft); }
@@ -292,7 +299,6 @@
       </a>
       <nav class="links">
         <a href="#story">Story</a>
-        <a href="#products">Spices</a>
         <a href="#products">Collection</a>
         <a href="#notify">Waitlist</a>
       </nav>
@@ -379,8 +385,11 @@
   <section class="quote-break">
     <div class="qglow" data-depth="0.15"></div>
     <div class="wrap">
-      <div class="qmark reveal">&ldquo;</div>
-      <blockquote class="reveal">Bare by name. <em>Whole</em> by nature. Nothing added, nothing hidden.</blockquote>
+      <figure class="reveal">
+        <span class="qmark qmark-open" aria-hidden="true">&ldquo;</span>
+        <blockquote>Bare by name. <em>Whole</em> by nature. Nothing added, nothing hidden.</blockquote>
+        <span class="qmark qmark-close" aria-hidden="true">&rdquo;</span>
+      </figure>
     </div>
   </section>
 
@@ -448,11 +457,11 @@
           <div class="foot"><a href="#notify" class="notify">Notify Me →</a><span class="origin">Ceylon</span></div>
         </article>
 
-        <article class="card reveal" style="background:var(--cardamom-deep);color:var(--parchment);justify-content:center;align-items:flex-start;">
-          <div class="kicker" style="color:var(--saffron-bright);">The Full Set</div>
+        <article class="card reveal" style="background:var(--cardamom-deep);color:var(--parchment);align-items:flex-start;justify-content:flex-start;">
+          <div class="kicker" style="color:var(--saffron-bright);margin-top:6px;">The Full Set</div>
           <h3 style="color:var(--parchment);font-size:2.2rem;">Five spices,<br>one story.</h3>
-          <p style="color:rgba(244,236,217,0.7);">A curated collection of our signature spices — launching together, soon.</p>
-          <a href="#notify" class="btn" style="background:var(--saffron);">Join the Waitlist</a>
+          <p style="color:rgba(244,236,217,0.7);margin-bottom:0;">A curated collection of our signature spices — launching together, soon.</p>
+          <a href="#notify" class="btn" style="background:var(--saffron);align-self:flex-start;margin-top:28px;">Join the Waitlist</a>
         </article>
 
       </div>
@@ -466,11 +475,12 @@
       <span class="badge reveal">The doors open soon</span>
       <h2 class="reveal">Be first to bring the <em>aroma</em> home.</h2>
       <p class="reveal">Join the waitlist and we'll let you know the moment Bare Botany is ready for your table.</p>
-      <form class="signup reveal" onsubmit="event.preventDefault(); this.querySelector('input').value=''; this.nextElementSibling.textContent='Thank you — you\'re on the list.';">
-        <input type="email" placeholder="Enter your email" required aria-label="Email address" />
-        <button type="submit">Notify Me</button>
+      <form class="signup reveal" id="waitlistForm" novalidate>
+        <select id="wlCode" class="wl-code" aria-label="Country code" hidden></select>
+        <input type="text" name="contact" id="wlInput" placeholder="Enter your email or phone number" required aria-label="Email address or phone number" autocomplete="email" inputmode="email" />
+        <button type="submit" id="waitlistBtn">Notify Me</button>
       </form>
-      <p class="note reveal">No spam. Just the good stuff, when it's ready.</p>
+      <p class="note reveal" id="waitlistNote">No spam. Just the good stuff, when it's ready.</p>
 
       <div class="ig-cta reveal">
         <div class="ig-or"><span>or follow the journey</span></div>
@@ -530,16 +540,26 @@
     });
 
     // Scroll reveal
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e, i) => {
-        if (e.isIntersecting) {
-          e.target.style.transitionDelay = (i % 3) * 0.08 + 's';
-          e.target.classList.add('in');
-          io.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.16 });
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    const revealEls = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e, i) => {
+          if (e.isIntersecting) {
+            e.target.style.transitionDelay = (i % 3) * 0.08 + 's';
+            e.target.classList.add('in');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.01, rootMargin: '0px 0px -8% 0px' });
+      revealEls.forEach(el => io.observe(el));
+      // Failsafe: if anything is still hidden shortly after load (observer
+      // missed it), reveal it so it can never stay invisible/unclickable.
+      const failsafe = () => revealEls.forEach(el => el.classList.add('in'));
+      window.addEventListener('load', () => setTimeout(failsafe, 2500));
+    } else {
+      // No observer support → show everything immediately.
+      revealEls.forEach(el => el.classList.add('in'));
+    }
 
     // Progress + sticky nav
     const progress = document.getElementById('progress');
@@ -573,6 +593,239 @@
         card.style.transform = `rotateY(${px * 8}deg) rotateX(${-py * 8}deg) translateY(-6px)`;
       });
       card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+    });
+
+    // ===== Waitlist form → Google Sheet (Apps Script Web App) =====
+    // 1) Create the Apps Script (see instructions), Deploy as Web App ("Anyone").
+    // 2) Paste the /exec URL below, replacing PASTE_YOUR_APPS_SCRIPT_URL_HERE.
+    const WAITLIST_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzpfvwtYZkGsv8nn3HugYeXOAheBzcZBKvjoOyuJMqo6pD0OQu61xXvwRukHvfJ1Upg/exec';
+
+    const wlForm = document.getElementById('waitlistForm');
+    const wlBtn  = document.getElementById('waitlistBtn');
+    const wlNote = document.getElementById('waitlistNote');
+    const wlInput = document.getElementById('wlInput');
+    const wlCode = document.getElementById('wlCode');
+    let wlSubmitting = false;
+
+    // Full country dial-code list [ISO, name, dialCode]. India first (default).
+    const WL_COUNTRIES = [
+      ["IN","India","91"],["AF","Afghanistan","93"],["AL","Albania","355"],["DZ","Algeria","213"],
+      ["AD","Andorra","376"],["AO","Angola","244"],["AG","Antigua & Barbuda","1"],["AR","Argentina","54"],
+      ["AM","Armenia","374"],["AU","Australia","61"],["AT","Austria","43"],["AZ","Azerbaijan","994"],
+      ["BS","Bahamas","1"],["BH","Bahrain","973"],["BD","Bangladesh","880"],["BB","Barbados","1"],
+      ["BY","Belarus","375"],["BE","Belgium","32"],["BZ","Belize","501"],["BJ","Benin","229"],
+      ["BT","Bhutan","975"],["BO","Bolivia","591"],["BA","Bosnia & Herzegovina","387"],["BW","Botswana","267"],
+      ["BR","Brazil","55"],["BN","Brunei","673"],["BG","Bulgaria","359"],["BF","Burkina Faso","226"],
+      ["BI","Burundi","257"],["KH","Cambodia","855"],["CM","Cameroon","237"],["CA","Canada","1"],
+      ["CV","Cape Verde","238"],["CF","Central African Rep.","236"],["TD","Chad","235"],["CL","Chile","56"],
+      ["CN","China","86"],["CO","Colombia","57"],["KM","Comoros","269"],["CG","Congo","242"],
+      ["CD","Congo (DRC)","243"],["CR","Costa Rica","506"],["CI","Côte d’Ivoire","225"],["HR","Croatia","385"],
+      ["CU","Cuba","53"],["CY","Cyprus","357"],["CZ","Czechia","420"],["DK","Denmark","45"],
+      ["DJ","Djibouti","253"],["DM","Dominica","1"],["DO","Dominican Rep.","1"],["EC","Ecuador","593"],
+      ["EG","Egypt","20"],["SV","El Salvador","503"],["GQ","Equatorial Guinea","240"],["ER","Eritrea","291"],
+      ["EE","Estonia","372"],["SZ","Eswatini","268"],["ET","Ethiopia","251"],["FJ","Fiji","679"],
+      ["FI","Finland","358"],["FR","France","33"],["GA","Gabon","241"],["GM","Gambia","220"],
+      ["GE","Georgia","995"],["DE","Germany","49"],["GH","Ghana","233"],["GR","Greece","30"],
+      ["GD","Grenada","1"],["GT","Guatemala","502"],["GN","Guinea","224"],["GW","Guinea-Bissau","245"],
+      ["GY","Guyana","592"],["HT","Haiti","509"],["HN","Honduras","504"],["HK","Hong Kong","852"],
+      ["HU","Hungary","36"],["IS","Iceland","354"],["ID","Indonesia","62"],["IR","Iran","98"],
+      ["IQ","Iraq","964"],["IE","Ireland","353"],["IL","Israel","972"],["IT","Italy","39"],
+      ["JM","Jamaica","1"],["JP","Japan","81"],["JO","Jordan","962"],["KZ","Kazakhstan","7"],
+      ["KE","Kenya","254"],["KI","Kiribati","686"],["KW","Kuwait","965"],["KG","Kyrgyzstan","996"],
+      ["LA","Laos","856"],["LV","Latvia","371"],["LB","Lebanon","961"],["LS","Lesotho","266"],
+      ["LR","Liberia","231"],["LY","Libya","218"],["LI","Liechtenstein","423"],["LT","Lithuania","370"],
+      ["LU","Luxembourg","352"],["MO","Macau","853"],["MG","Madagascar","261"],["MW","Malawi","265"],
+      ["MY","Malaysia","60"],["MV","Maldives","960"],["ML","Mali","223"],["MT","Malta","356"],
+      ["MH","Marshall Islands","692"],["MR","Mauritania","222"],["MU","Mauritius","230"],["MX","Mexico","52"],
+      ["FM","Micronesia","691"],["MD","Moldova","373"],["MC","Monaco","377"],["MN","Mongolia","976"],
+      ["ME","Montenegro","382"],["MA","Morocco","212"],["MZ","Mozambique","258"],["MM","Myanmar","95"],
+      ["NA","Namibia","264"],["NR","Nauru","674"],["NP","Nepal","977"],["NL","Netherlands","31"],
+      ["NZ","New Zealand","64"],["NI","Nicaragua","505"],["NE","Niger","227"],["NG","Nigeria","234"],
+      ["KP","North Korea","850"],["MK","North Macedonia","389"],["NO","Norway","47"],["OM","Oman","968"],
+      ["PK","Pakistan","92"],["PW","Palau","680"],["PS","Palestine","970"],["PA","Panama","507"],
+      ["PG","Papua New Guinea","675"],["PY","Paraguay","595"],["PE","Peru","51"],["PH","Philippines","63"],
+      ["PL","Poland","48"],["PT","Portugal","351"],["QA","Qatar","974"],["RO","Romania","40"],
+      ["RU","Russia","7"],["RW","Rwanda","250"],["KN","Saint Kitts & Nevis","1"],["LC","Saint Lucia","1"],
+      ["VC","Saint Vincent","1"],["WS","Samoa","685"],["SM","San Marino","378"],["ST","São Tomé & Príncipe","239"],
+      ["SA","Saudi Arabia","966"],["SN","Senegal","221"],["RS","Serbia","381"],["SC","Seychelles","248"],
+      ["SL","Sierra Leone","232"],["SG","Singapore","65"],["SK","Slovakia","421"],["SI","Slovenia","386"],
+      ["SB","Solomon Islands","677"],["SO","Somalia","252"],["ZA","South Africa","27"],["KR","South Korea","82"],
+      ["SS","South Sudan","211"],["ES","Spain","34"],["LK","Sri Lanka","94"],["SD","Sudan","249"],
+      ["SR","Suriname","597"],["SE","Sweden","46"],["CH","Switzerland","41"],["SY","Syria","963"],
+      ["TW","Taiwan","886"],["TJ","Tajikistan","992"],["TZ","Tanzania","255"],["TH","Thailand","66"],
+      ["TL","Timor-Leste","670"],["TG","Togo","228"],["TO","Tonga","676"],["TT","Trinidad & Tobago","1"],
+      ["TN","Tunisia","216"],["TR","Türkiye","90"],["TM","Turkmenistan","993"],["TV","Tuvalu","688"],
+      ["UG","Uganda","256"],["UA","Ukraine","380"],["AE","United Arab Emirates","971"],["GB","United Kingdom","44"],
+      ["US","United States","1"],["UY","Uruguay","598"],["UZ","Uzbekistan","998"],["VU","Vanuatu","678"],
+      ["VA","Vatican City","39"],["VE","Venezuela","58"],["VN","Vietnam","84"],["YE","Yemen","967"],
+      ["ZM","Zambia","260"],["ZW","Zimbabwe","263"]
+    ];
+    // Flag emoji from ISO code (regional-indicator letters).
+    function wlFlag(iso) {
+      return iso.replace(/./g, c => String.fromCodePoint(127397 + c.charCodeAt(0)));
+    }
+    // Expected NATIONAL number length (digits after the country code), by ISO.
+    // A number = exact; [min,max] = range. Unlisted countries fall back to WL_NSN_DEFAULT.
+    const WL_NSN = {
+      IN:10, US:10, CA:10, GB:10, AE:9, AU:9, SG:8, NZ:[8,10], MY:[9,10], BD:10,
+      PK:10, LK:9, NP:10, CN:11, HK:8, JP:[10,11], KR:[9,10], SA:9, QA:8, KW:8,
+      BH:8, OM:8, DE:[10,11], FR:9, IT:10, ES:9, PT:9, NL:9, BE:[8,9], CH:9,
+      AT:[10,11], SE:[7,9], NO:8, DK:8, FI:[9,10], IE:9, PL:9, RU:10, UA:9, TR:10,
+      ZA:9, NG:10, KE:9, EG:10, BR:11, MX:10, AR:10, CL:9, CO:10, PE:9,
+      ID:[9,11], PH:10, VN:[9,10], TH:9, GR:10, CZ:9, RO:9, HU:9, IL:9
+    };
+    const WL_NSN_DEFAULT = [6, 12];
+
+    WL_COUNTRIES.forEach(([iso, name, dial]) => {
+      const o = document.createElement('option');
+      o.value = '+' + dial;
+      o.textContent = wlFlag(iso) + ' +' + dial;
+      o.title = name + ' (+' + dial + ')';
+      o.dataset.iso = iso;
+      o.dataset.name = name;
+      wlCode.appendChild(o);
+    });
+    wlCode.value = '+91'; // default India
+
+    function wlExpected(iso) {
+      const spec = WL_NSN[iso] || WL_NSN_DEFAULT;
+      return Array.isArray(spec) ? spec : [spec, spec];
+    }
+
+    // Does the current text look like a phone number (not an email)?
+    function looksLikePhone(v) {
+      const s = v.trim();
+      if (s === '') return false;
+      if (s.indexOf('@') !== -1) return false;         // it's heading toward an email
+      return /^[+\d][\d\s().\-]*$/.test(s);            // starts with + or a digit
+    }
+
+    // Show the country-code dropdown only while a phone is being entered.
+    function updateCodeVisibility() {
+      const phone = looksLikePhone(wlInput.value);
+      // If the user typed their own +code, hide the picker (they're explicit).
+      const explicitPlus = wlInput.value.trim().charAt(0) === '+';
+      wlCode.hidden = !phone || explicitPlus;
+      wlInput.placeholder = phone ? 'Your phone number' : 'Enter your email or phone number';
+    }
+    wlInput.addEventListener('input', updateCodeVisibility);
+
+    // Build the final contact string + type. For phones, prepend the chosen
+    // country code and validate the national-number length for that country.
+    function classifyContact(raw) {
+      const value = raw.trim();
+      const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+      if (emailRe.test(value)) return { type: 'email', value: value };
+
+      if (looksLikePhone(value)) {
+        const explicitPlus = value.charAt(0) === '+';
+        // National digits the user typed (strip formatting).
+        let national = value.replace(/[\s().\-]/g, '');
+        let dial, iso, name;
+
+        if (explicitPlus) {
+          // User typed their own +code — match it to a known country (longest code wins).
+          const digits = national.replace(/^\+/, '');
+          const opts = [...wlCode.options].sort((a,b) => b.value.length - a.value.length);
+          const match = opts.find(o => ('+' + digits).startsWith(o.value));
+          if (!match) return { type: null, value: value, reason: 'bad_phone' };
+          dial = match.value; iso = match.dataset.iso; name = match.dataset.name;
+          national = digits.slice(dial.length - 1); // remove the code portion
+        } else {
+          const opt = wlCode.selectedOptions[0];
+          dial = wlCode.value; iso = opt.dataset.iso; name = opt.dataset.name;
+        }
+
+        if (!/^\d+$/.test(national)) return { type: null, value: value, reason: 'bad_phone' };
+
+        const [min, max] = wlExpected(iso);
+        if (national.length < min || national.length > max) {
+          const need = (min === max) ? (min + ' digits') : (min + '–' + max + ' digits');
+          return { type: null, value: value, reason: 'bad_length', need: need, country: name };
+        }
+
+        return { type: 'phone', value: dial + national };
+      }
+
+      return { type: null, value: value };
+    }
+
+    wlForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (wlSubmitting) return;
+
+      const info = classifyContact(wlInput.value);
+      const { type, value, reason, need, country } = info;
+      if (!type) {
+        if (reason === 'bad_length') {
+          wlNote.textContent = country + ' numbers should be ' + need + '. Please check and try again.';
+        } else if (reason === 'bad_phone') {
+          wlNote.textContent = 'Please enter a valid phone number.';
+        } else {
+          wlNote.textContent = 'Please enter a valid email address or phone number.';
+        }
+        wlInput.focus();
+        return;
+      }
+
+      // Not configured yet — fail loudly in console, gracefully to the user.
+      if (!WAITLIST_ENDPOINT || WAITLIST_ENDPOINT.indexOf('PASTE_YOUR') === 0) {
+        wlNote.textContent = 'Waitlist isn’t connected yet. (Add your Apps Script URL.)';
+        console.warn('WAITLIST_ENDPOINT is not set — see the instructions in the <script> block.');
+        return;
+      }
+
+      wlSubmitting = true;
+      wlBtn.disabled = true;
+      const originalLabel = wlBtn.textContent;
+      wlBtn.textContent = 'Joining…';
+      wlNote.textContent = '';
+
+      // We use JSONP (a <script> tag) instead of fetch, because Apps Script
+      // can't send CORS headers — JSONP lets us actually READ the reply, so we
+      // can tell "added" apart from "already on the list".
+      const finish = (ok, res) => {
+        cleanup();
+        if (ok && res && res.duplicate) {
+          wlForm.reset();
+          wlNote.textContent = 'You’re already on the list — we’ll be in touch. 🌿';
+          wlBtn.textContent = 'Added ✓';
+        } else if (ok && res && res.ok) {
+          wlForm.reset();
+          wlNote.textContent = 'Thank you — you’re on the list. We’ll be in touch.';
+          wlBtn.textContent = 'Added ✓';
+        } else {
+          wlNote.textContent = (res && res.error === 'invalid_contact')
+            ? 'Please enter a valid email address or phone number.'
+            : 'Something went wrong — please try again.';
+          wlBtn.textContent = originalLabel;
+          wlBtn.disabled = false;
+          wlSubmitting = false;
+        }
+      };
+
+      const cbName = 'wlcb_' + Date.now();
+      let timer;
+      const script = document.createElement('script');
+      function cleanup() {
+        clearTimeout(timer);
+        delete window[cbName];
+        if (script.parentNode) script.parentNode.removeChild(script);
+      }
+      window[cbName] = (res) => finish(true, res);
+
+      const params = new URLSearchParams({
+        callback: cbName,
+        contact: value,
+        type: type,                                  // 'email' or 'phone'
+        source: 'bare-botany-waitlist',
+        page: location.href,
+        ts: new Date().toISOString()
+      });
+      script.src = WAITLIST_ENDPOINT + '?' + params.toString();
+      script.onerror = () => finish(false, null);
+      timer = setTimeout(() => finish(false, null), 12000); // network fallback
+      document.body.appendChild(script);
     });
   </script>
 
