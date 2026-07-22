@@ -261,6 +261,12 @@
     .signup { flex-direction: column; border-radius: 24px; }
     .signup input { padding: 14px 22px; text-align: center; }
     .signup button { width: 100%; }
+    /* eyebrow: wrap + shrink so it never overflows */
+    .hero-eyebrow { flex-wrap: wrap; justify-content: center; gap: 10px; font-size: 0.64rem; letter-spacing: 0.24em; max-width: 100%; }
+    .hero-eyebrow span { width: 28px; }
+    .hero h1 { font-size: clamp(2.6rem, 13vw, 4rem); letter-spacing: -0.01em; }
+    .hero-tag { font-size: 1.05rem; }
+    .hero-content { padding: 0 24px; }
   }
 </style>
 </head>
