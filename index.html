@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#171715" />
+  <meta name="description" content="Discover Bare Botany's whole spices: green cardamom, black pepper, clove, cinnamon and star anise. Pure ingredients, rich aroma, memorable flavor." />
+  <title>Bare Botany — Pure Spice, Beautifully Considered</title>
+  <link rel="icon" type="image/png" href="assets/bare-botany-logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root { --black:#171715; --charcoal:#22221f; --cream:#f6f2e9; --paper:#fffdf8; --gold:#cda35d; --gold-light:#e9cd95; --olive:#687052; --muted:#716d64; --line:#ded7c9; }
+    *,*::before,*::after { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    section[id] { scroll-margin-top:84px; }
+    body { margin:0; background:var(--cream); color:var(--black); font-family:Manrope,Arial,sans-serif; -webkit-font-smoothing:antialiased; }
+    img { display:block; max-width:100%; }
+    a { color:inherit; }
+    button,input,select { font:inherit; }
+    button,a,input,select { -webkit-tap-highlight-color:transparent; }
+    :focus-visible { outline:2px solid var(--gold); outline-offset:4px; }
+    ::selection { background:var(--gold); color:var(--black); }
+    .container { width:min(1240px,calc(100% - 64px)); margin:auto; }
+    .eyebrow { display:inline-flex; align-items:center; gap:12px; color:var(--gold); font-size:.68rem; letter-spacing:.28em; font-weight:700; text-transform:uppercase; }
+    .eyebrow::before { content:""; width:29px; height:1px; background:currentColor; }
+    .serif { font-family:'Cormorant Garamond',Georgia,serif; }
+    .progress { position:fixed; top:0; left:0; width:0; height:2px; background:var(--gold); z-index:100; }
+    .announcement { background:#c9a15f; color:#171715; text-align:center; padding:9px 20px; font-size:.62rem; font-weight:700; letter-spacing:.24em; text-transform:uppercase; }
+    .site-header { position:sticky; top:0; z-index:50; background:rgba(23,23,21,.97); border-bottom:1px solid rgba(233,205,149,.2); backdrop-filter:blur(14px); }
+    .header-inner { min-height:84px; display:flex; align-items:center; justify-content:space-between; gap:30px; }
+    .brand { display:inline-flex; align-items:center; gap:13px; color:var(--paper); text-decoration:none; flex-shrink:0; }
+    .brand img { width:43px; height:43px; object-fit:contain; }
+    .brand-name { font-family:'Cormorant Garamond',Georgia,serif; font-size:1.62rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; white-space:nowrap; }
+    .header-links { display:flex; gap:36px; align-items:center; }
+    .header-links a { text-decoration:none; color:#dfd9cc; font-size:.66rem; font-weight:700; letter-spacing:.17em; text-transform:uppercase; transition:color .2s; }
+    .header-links a:hover { color:var(--gold-light); }
+    .header-action { text-decoration:none; border:1px solid var(--gold); padding:13px 21px; color:var(--gold-light); font-size:.65rem; font-weight:700; letter-spacing:.17em; text-transform:uppercase; white-space:nowrap; transition:background .2s,color .2s; }
+    .header-action:hover { background:var(--gold); color:var(--black); }
+    .hero { display:grid; grid-template-columns:52% 48%; min-height:min(730px,calc(100svh - 119px)); background:var(--black); color:var(--paper); }
+    .hero-copy { padding:clamp(70px,8vw,126px) 7vw 62px max(32px,calc((100vw - 1240px)/2)); display:flex; flex-direction:column; justify-content:center; position:relative; overflow:hidden; }
+    .hero-copy::after { content:"B"; position:absolute; font-family:'Cormorant Garamond',serif; font-size:47rem; line-height:1; right:-85px; bottom:-245px; color:rgba(205,163,93,.045); pointer-events:none; }
+    .hero-copy > * { position:relative; z-index:1; }
+    .hero h1 { max-width:650px; margin:24px 0 22px; font-family:'Cormorant Garamond',Georgia,serif; font-weight:500; font-size:clamp(4.5rem,6.8vw,7.4rem); line-height:.86; letter-spacing:-.058em; }
+    .hero h1 em { display:block; color:var(--gold-light); font-weight:400; }
+    .hero-intro { max-width:49ch; color:#c6c0b4; font-size:.94rem; line-height:1.85; }
+    .hero-actions { display:flex; align-items:center; gap:28px; margin-top:32px; flex-wrap:wrap; }
+    .button { display:inline-flex; align-items:center; justify-content:center; gap:22px; min-height:54px; padding:0 25px; background:var(--gold); color:var(--black); text-decoration:none; font-size:.68rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; border:1px solid var(--gold); transition:background .2s,color .2s,transform .2s; }
+    .button:hover { background:var(--gold-light); transform:translateY(-2px); }
+    .button .arrow { font-size:1.1rem; line-height:1; }
+    .text-link { display:inline-flex; align-items:center; gap:12px; color:var(--paper); text-decoration:none; font-size:.67rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; border-bottom:1px solid rgba(255,253,248,.48); padding-bottom:7px; transition:color .2s; }
+    .text-link:hover { color:var(--gold-light); }
+    .hero-foot { display:flex; align-items:center; gap:15px; margin-top:70px; color:#a9a396; font-size:.62rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
+    .hero-foot span:first-child { width:37px; height:1px; background:var(--gold); }
+    .hero-media { position:relative; min-height:560px; background:#342619; overflow:hidden; }
+    .hero-media img { width:100%; height:100%; object-fit:cover; object-position:center 54%; }
+    .hero-media::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg,rgba(23,23,21,.18),transparent 24%),linear-gradient(0deg,rgba(23,23,21,.42),transparent 28%); pointer-events:none; }
+    .image-caption { position:absolute; bottom:30px; right:34px; z-index:1; color:#f6f2e9; font-size:.62rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; text-align:right; text-shadow:0 2px 8px #171715; }
+    .values { background:#ede7da; border-bottom:1px solid var(--line); }
+    .values-inner { display:grid; grid-template-columns:repeat(3,1fr); }
+    .value { display:flex; align-items:center; gap:17px; min-height:106px; padding:22px 30px; border-left:1px solid #d4c9b8; }
+    .value:first-child { border-left:0; padding-left:0; }
+    .value:last-child { padding-right:0; }
+    .value-index { font-family:'Cormorant Garamond',serif; font-size:2rem; color:#b28a4b; line-height:1; }
+    .value strong { display:block; font-family:'Cormorant Garamond',serif; font-size:1.45rem; font-weight:600; line-height:1; }
+    .value span:last-child { display:block; color:var(--muted); font-size:.68rem; margin-top:5px; }
+    .collection { padding:120px 0 130px; background:var(--cream); }
+    .section-head { display:flex; justify-content:space-between; align-items:end; gap:30px; margin-bottom:42px; }
+    .section-head h2,.story h2,.waitlist h2 { font-family:'Cormorant Garamond',Georgia,serif; font-weight:500; letter-spacing:-.05em; }
+    .section-head h2 { font-size:clamp(3.5rem,6vw,6.1rem); line-height:.9; margin:17px 0 0; }
+    .section-head h2 em { color:#a27a42; font-weight:400; }
+    .section-head p { max-width:36ch; color:var(--muted); font-size:.84rem; line-height:1.75; margin:0 0 5px; }
+    .product-grid { display:grid; grid-template-columns:repeat(6,1fr); gap:22px; }
+    .product-card { grid-column:span 2; background:var(--paper); border:1px solid #e3dbcd; transition:transform .3s,box-shadow .3s; overflow:hidden; }
+    .product-card:nth-child(4) { grid-column:2 / span 2; }
+    .product-card:nth-child(5) { grid-column:4 / span 2; }
+    .product-card:hover { transform:translateY(-5px); box-shadow:0 24px 50px rgba(39,31,19,.1); }
+    .product-image { height:355px; background:#f3eee6; overflow:hidden; position:relative; }
+    .product-image img { width:100%; height:100%; object-fit:contain; mix-blend-mode:multiply; transition:transform .5s; }
+    .product-card:hover .product-image img { transform:scale(1.045); }
+    .product-tag { position:absolute; top:17px; left:17px; z-index:2; background:var(--black); color:var(--gold-light); padding:8px 11px; font-size:.56rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; }
+    .product-copy { padding:27px 28px 25px; }
+    .product-kicker { color:#9b753d; font-size:.61rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; }
+    .product-copy h3 { font-family:'Cormorant Garamond',serif; font-size:2.45rem; font-weight:600; letter-spacing:-.035em; line-height:1; margin:12px 0 10px; }
+    .product-copy p { color:var(--muted); font-size:.79rem; line-height:1.7; min-height:44px; margin:0 0 25px; }
+    .size-row { display:flex; align-items:center; gap:8px; margin:0 0 22px; }
+    .size-row > span:first-child { margin-right:4px; color:var(--muted); font-size:.62rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
+    .size-pill { border:1px solid #cdbb9f; color:#62533f; padding:6px 12px; font-size:.65rem; font-weight:700; line-height:1; }
+    .product-bottom { display:flex; align-items:center; justify-content:space-between; border-top:1px solid var(--line); padding-top:17px; gap:10px; }
+    .product-bottom span { font-size:.65rem; color:var(--muted); font-weight:600; }
+    .product-bottom a { text-decoration:none; font-size:.63rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#88622f; white-space:nowrap; }
+    .product-bottom a:hover { color:var(--black); }
+    .story { display:grid; grid-template-columns:1fr 1fr; background:#22221f; color:var(--paper); min-height:615px; }
+    .story-image { min-height:550px; overflow:hidden; }
+    .story-image img { width:100%; height:100%; object-fit:cover; }
+    .story-copy { padding:90px max(32px,calc((100vw - 1240px)/2)) 80px clamp(55px,7vw,120px); display:flex; flex-direction:column; justify-content:center; }
+    .story h2 { font-size:clamp(3.7rem,5.8vw,6.5rem); line-height:.89; margin:22px 0 23px; }
+    .story h2 em { color:var(--gold-light); font-weight:400; }
+    .story-copy > p { color:#c3bcaf; font-size:.88rem; line-height:1.88; max-width:49ch; margin:0 0 28px; }
+    .story-rule { width:65px; height:1px; background:var(--gold); margin:8px 0 25px; }
+    .story-quote { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.65rem; color:var(--gold-light); line-height:1.25; max-width:20ch; }
+    .promise { padding:105px 0; background:#e9e1d2; }
+    .promise-inner { display:grid; grid-template-columns:1fr 1fr 1fr; gap:55px; }
+    .promise-item { border-top:1px solid #bdaa8d; padding-top:26px; }
+    .promise-num { font-family:'Cormorant Garamond',serif; font-size:2.3rem; color:#9d763f; }
+    .promise-item h3 { font-family:'Cormorant Garamond',serif; font-size:2.15rem; font-weight:600; margin:15px 0 8px; }
+    .promise-item p { color:var(--muted); font-size:.8rem; line-height:1.75; margin:0; }
+    .waitlist { background:var(--black); color:var(--paper); padding:110px 0; position:relative; overflow:hidden; }
+    .waitlist::after { content:""; position:absolute; right:-100px; top:-140px; width:530px; height:530px; border:1px solid rgba(205,163,93,.13); border-radius:50%; box-shadow:0 0 0 80px rgba(205,163,93,.025),0 0 0 160px rgba(205,163,93,.02); pointer-events:none; }
+    .waitlist-inner { position:relative; z-index:1; display:grid; grid-template-columns:1fr 1fr; gap:90px; align-items:center; }
+    .waitlist h2 { font-size:clamp(3.8rem,6vw,6.8rem); line-height:.88; margin:20px 0 0; }
+    .waitlist h2 em { color:var(--gold-light); font-weight:400; }
+    .waitlist-details > p { font-size:.9rem; line-height:1.8; color:#c0b9aa; max-width:43ch; margin:0 0 25px; }
+    .signup { display:flex; border:1px solid rgba(233,205,149,.55); padding:5px; background:#252521; min-height:62px; }
+    .signup input { min-width:0; flex:1; border:0; outline:0; background:transparent; padding:0 14px; color:var(--paper); font-size:.76rem; }
+    .signup input::placeholder { color:#a7a093; opacity:1; }
+    .wl-code { align-self:center; max-width:95px; height:45px; background:#35352f; border:0; color:var(--paper); font-size:.7rem; padding:0 7px; }
+    .wl-code[hidden] { display:none; }
+    .signup button { background:var(--gold); border:0; min-width:138px; color:var(--black); padding:0 17px; font-size:.64rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; cursor:pointer; transition:background .2s; }
+    .signup button:hover { background:var(--gold-light); }
+    .signup button:disabled { opacity:.7; cursor:default; }
+    .form-note { min-height:20px; font-size:.67rem; color:#aaa294; margin:13px 0 0; }
+    .social-link { display:inline-flex; align-items:center; gap:11px; color:var(--gold-light); text-decoration:none; border-bottom:1px solid rgba(233,205,149,.5); padding-bottom:6px; margin-top:25px; font-size:.66rem; font-weight:700; letter-spacing:.13em; text-transform:uppercase; }
+    .social-link:hover { color:var(--paper); }
+    .footer { background:#10100f; color:var(--paper); border-top:1px solid rgba(233,205,149,.2); }
+    .footer-main { display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:60px; padding:65px 0 50px; }
+    .footer .brand img { width:48px; height:48px; }
+    .footer-brand p { color:#a59f95; max-width:32ch; line-height:1.8; font-size:.76rem; margin:18px 0 0; }
+    .footer-column h3 { color:var(--gold); font-size:.62rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; margin:4px 0 22px; }
+    .footer-column a { display:block; width:max-content; color:#c7c0b6; text-decoration:none; font-size:.76rem; margin:0 0 13px; }
+    .footer-column a:hover { color:var(--gold-light); }
+    .footer-bottom { border-top:1px solid rgba(233,205,149,.15); padding:22px 0 28px; display:flex; justify-content:space-between; gap:20px; color:#817b72; font-size:.62rem; letter-spacing:.08em; }
+    .footer-bottom span:last-child { font-family:'Cormorant Garamond',serif; font-style:italic; color:#bba67f; font-size:1rem; letter-spacing:0; }
+    .reveal { opacity:0; transform:translateY(22px); transition:opacity .75s ease,transform .75s ease; }
+    .reveal.in { opacity:1; transform:none; }
+    @media(max-width:1050px) { .hero-copy { padding-left:32px; padding-right:32px; } .hero h1 { font-size:clamp(4rem,7vw,6rem); } .story-copy { padding:70px 45px; } .product-image { height:300px; } .value { padding:20px; } }
+    @media(min-width:761px) and (max-width:1050px) { .product-grid { grid-template-columns:repeat(2,1fr); } .product-card,.product-card:nth-child(4),.product-card:nth-child(5) { grid-column:auto; } .product-card:nth-child(5) { grid-column:1/-1; width:calc(50% - 11px); justify-self:center; } }
+    @media(max-width:760px) { .container { width:min(100% - 40px,600px); } .announcement { font-size:.53rem; letter-spacing:.17em; } .header-inner { min-height:69px; } .brand img { width:36px; height:36px; } .brand-name { font-size:1.29rem; } .header-links { display:none; } .header-action { padding:11px 12px; font-size:.56rem; } .hero { grid-template-columns:1fr; } .hero-copy { padding:75px 20px 55px; text-align:left; } .hero h1 { font-size:clamp(4.5rem,13.8vw,6.8rem); max-width:620px; } .hero-foot { margin-top:48px; } .hero-media { height:570px; min-height:0; } .values-inner { grid-template-columns:1fr; } .value { min-height:85px; border-left:0; border-top:1px solid #d4c9b8; padding:18px 0; } .value:first-child { border-top:0; padding-left:0; } .collection { padding:85px 0; } .section-head { display:block; } .section-head p { margin-top:20px; } .product-grid { grid-template-columns:1fr; max-width:520px; margin:auto; gap:20px; } .product-image { height:370px; } .story { grid-template-columns:1fr; } .story-image { min-height:0; height:450px; } .story-copy { padding:80px 20px; } .promise { padding:75px 0; } .promise-inner { grid-template-columns:1fr; gap:37px; } .waitlist { padding:85px 0; } .waitlist-inner { grid-template-columns:1fr; gap:36px; } .footer-main { grid-template-columns:1fr 1fr; gap:40px; } .footer-brand { grid-column:1/-1; } }
+    @media(max-width:760px) { .product-card,.product-card:nth-child(4),.product-card:nth-child(5) { grid-column:1; } }
+    @media(max-width:440px) { .container { width:calc(100% - 34px); } .brand-name { font-size:1.12rem; } .brand { gap:8px; } .header-action { font-size:.5rem; letter-spacing:.08em; } .hero-copy { padding:65px 17px 48px; } .hero h1 { font-size:clamp(4.05rem,15vw,5.5rem); } .hero-intro { font-size:.83rem; } .hero-media { height:440px; } .image-caption { right:17px; bottom:18px; } .section-head h2 { font-size:3.8rem; } .product-image { height:320px; } .story-image { height:330px; } .story h2,.waitlist h2 { font-size:4.2rem; } .signup { flex-wrap:wrap; } .signup input { flex-basis:100%; height:48px; } .wl-code { height:42px; } .signup button { flex:1; height:46px; } .footer-main { gap:30px; } .footer-bottom { flex-direction:column; } }
+    @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { animation-duration:.01ms!important; transition-duration:.01ms!important; } .reveal { opacity:1; transform:none; } }
+  </style>
+</head>
+<body>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+  <div class="announcement">Pure ingredients <span aria-hidden="true">✦</span> Rich aroma <span aria-hidden="true">✦</span> Made for memorable moments</div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="Bare Botany home"><img src="assets/bare-botany-logo.png" alt="" width="43" height="43" /><span class="brand-name">Bare Botany</span></a>
+      <nav class="header-links" aria-label="Primary navigation"><a href="#collection">The collection</a><a href="#story">Our story</a><a href="#promise">Our promise</a></nav>
+      <a class="header-action" href="#notify">Join the waitlist</a>
+    </div>
+  </header>
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <span class="eyebrow">The art of honest flavor</span>
+        <h1 id="hero-title">Nature's finest, <em>beautifully bare.</em></h1>
+        <p class="hero-intro">Whole spices with character. Carefully chosen for the aroma, warmth and little moments that make a meal unforgettable.</p>
+        <div class="hero-actions"><a class="button" href="#collection">Explore the collection <span class="arrow" aria-hidden="true">↗</span></a><a class="text-link" href="#story">Discover our story <span aria-hidden="true">→</span></a></div>
+        <div class="hero-foot"><span aria-hidden="true"></span>Pure · Natural · Premium quality</div>
+      </div>
+      <div class="hero-media"><img src="assets/cardamom-hero.jpg" alt="Bare Botany green cardamom pouch among whole cardamom pods" width="1086" height="1448" fetchpriority="high" /><div class="image-caption">Featured spice / Green Cardamom</div></div>
+    </section>
+    <section class="values" aria-label="What makes Bare Botany special"><div class="container values-inner"><div class="value"><span class="value-index">01</span><div><strong>No added preservatives</strong><span>Just the spice, as it should be.</span></div></div><div class="value"><span class="value-index">02</span><div><strong>Rich in aroma</strong><span>Flavor that makes itself known.</span></div></div><div class="value"><span class="value-index">03</span><div><strong>Sourced with care</strong><span>Thoughtful from start to finish.</span></div></div></div></section>
+    <section class="collection" id="collection" aria-labelledby="collection-title"><div class="container"><div class="section-head reveal"><div><span class="eyebrow">Explore Bare Botany</span><h2 id="collection-title">The <em>collection.</em></h2></div><p>Five kitchen essentials, each with a story to tell. Meet the whole spices that turn the everyday into something special.</p></div><div class="product-grid">
+      <article class="product-card reveal"><div class="product-image"><span class="product-tag">Coming soon</span><img src="assets/cardamom-pack.jpg" alt="Bare Botany Green Cardamom 50 gram pouch" loading="lazy" width="1254" height="1254" /></div><div class="product-copy"><span class="product-kicker">Whole spice</span><h3>Green Cardamom</h3><p>Floral, bright and unmistakably fragrant. The heart of a beautiful cup of chai.</p><div class="size-row" aria-label="Sizes: 50 grams and 100 grams"><span>Sizes</span><span class="size-pill">50 g</span><span class="size-pill">100 g</span></div><div class="product-bottom"><span>Elaichi</span><a href="#notify">Get notified ↗</a></div></div></article>
+      <article class="product-card reveal"><div class="product-image"><span class="product-tag">Coming soon</span><img src="assets/pepper-100g-pack.jpg" alt="Bare Botany Black Pepper 100 gram black pouch" loading="lazy" width="1254" height="1254" /></div><div class="product-copy"><span class="product-kicker">Whole spice</span><h3>Black Pepper</h3><p>Bold, warm and beautifully versatile. A little spark in every savory bite.</p><div class="size-row" aria-label="Sizes: 50 grams and 100 grams"><span>Sizes</span><span class="size-pill">50 g</span><span class="size-pill">100 g</span></div><div class="product-bottom"><span>Kali Mirch</span><a href="#notify">Get notified ↗</a></div></div></article>
+      <article class="product-card reveal"><div class="product-image"><span class="product-tag">Coming soon</span><img src="assets/clove-pack.jpg" alt="Bare Botany Clove 50 gram pouch" loading="lazy" width="1254" height="1254" /></div><div class="product-copy"><span class="product-kicker">Whole spice</span><h3>Clove</h3><p>Deep, aromatic and gently sweet. A timeless note of warmth for your kitchen.</p><div class="size-row" aria-label="Sizes: 50 grams and 100 grams"><span>Sizes</span><span class="size-pill">50 g</span><span class="size-pill">100 g</span></div><div class="product-bottom"><span>Laung</span><a href="#notify">Get notified ↗</a></div></div></article>
+      <article class="product-card reveal"><div class="product-image"><span class="product-tag">Coming soon</span><img src="assets/cinnamon-pack.jpg" alt="Bare Botany cinnamon in a golden front pouch" loading="lazy" width="1254" height="1254" /></div><div class="product-copy"><span class="product-kicker">Whole spice</span><h3>Cinnamon</h3><p>Warm, sweet and gently woody. A little comfort in every simmer and sip.</p><div class="size-row" aria-label="Sizes: 50 grams and 100 grams"><span>Sizes</span><span class="size-pill">50 g</span><span class="size-pill">100 g</span></div><div class="product-bottom"><span>Whole quills</span><a href="#notify">Get notified ↗</a></div></div></article>
+      <article class="product-card reveal"><div class="product-image"><span class="product-tag">Coming soon</span><img src="assets/star-anise-pack.jpg" alt="Bare Botany star anise in a black front pouch" loading="lazy" width="1254" height="1254" /></div><div class="product-copy"><span class="product-kicker">Whole spice</span><h3>Star Anise</h3><p>Striking whole stars with a distinctive sweet, aromatic depth.</p><div class="size-row" aria-label="Sizes: 50 grams and 100 grams"><span>Sizes</span><span class="size-pill">50 g</span><span class="size-pill">100 g</span></div><div class="product-bottom"><span>Whole stars</span><a href="#notify">Get notified ↗</a></div></div></article>
+    </div></div></section>
+    <section class="story" id="story" aria-labelledby="story-title"><div class="story-image"><img src="assets/clove-detail.jpg" alt="A close view of whole cloves scattered from a brass bowl" loading="lazy" width="1254" height="1254" /></div><div class="story-copy reveal"><span class="eyebrow">The Bare Botany story</span><h2 id="story-title">Some aromas <em>stay with us.</em></h2><p>The cardamom in your mother's chai. The fragrance from a kitchen full of family. We believe a truly good spice can take you back to those moments — and help you create new ones.</p><p>Bare Botany brings carefully chosen whole spices to your table with purity, care and the kind of flavor worth remembering.</p><div class="story-rule" aria-hidden="true"></div><div class="story-quote">“Crafting moments through flavor.”</div></div></section>
+    <section class="promise" id="promise" aria-label="Our promise"><div class="container promise-inner"><div class="promise-item reveal"><span class="promise-num">01 / Pure</span><h3>Nothing unnecessary.</h3><p>Whole spices, with no added preservatives, ready to bring their natural character to every recipe.</p></div><div class="promise-item reveal"><span class="promise-num">02 / Aromatic</span><h3>Flavor you can feel.</h3><p>From the first opening of the pouch to the last bite, every spice earns its place at the table.</p></div><div class="promise-item reveal"><span class="promise-num">03 / Thoughtful</span><h3>Made for your moments.</h3><p>Everyday cooking deserves ingredients chosen with the same care you put into sharing it.</p></div></div></section>
+    <section class="waitlist" id="notify" aria-labelledby="waitlist-title"><div class="container waitlist-inner"><div class="reveal"><span class="eyebrow">Be first in line</span><h2 id="waitlist-title">A little more <em>flavor is coming.</em></h2></div><div class="waitlist-details reveal"><p>Our collection is on its way. Join the list and we'll let you know when Bare Botany is ready for your kitchen.</p><form class="signup" id="waitlistForm" novalidate><select id="wlCode" class="wl-code" aria-label="Country code" hidden></select><input type="text" name="contact" id="wlInput" placeholder="Email address or phone number" required aria-label="Email address or phone number" autocomplete="email" inputmode="email" /><button type="submit" id="waitlistBtn">Notify me</button></form><p class="form-note" id="waitlistNote" role="status" aria-live="polite">Only the good stuff, when it's ready.</p><a class="social-link" href="https://instagram.com/thebarebotany" target="_blank" rel="noopener noreferrer">Follow @thebarebotany <span aria-hidden="true">↗</span></a></div></div></section>
+  </main>
+  <footer class="footer"><div class="container"><div class="footer-main"><div class="footer-brand"><a class="brand" href="#top" aria-label="Bare Botany home"><img src="assets/bare-botany-logo.png" alt="" width="48" height="48" /><span class="brand-name">Bare Botany</span></a><p>Whole spices, rich aromas, and the moments they help make memorable.</p></div><div class="footer-column"><h3>Explore</h3><a href="#collection">The collection</a><a href="#story">Our story</a><a href="#promise">Our promise</a></div><div class="footer-column"><h3>Connect</h3><a href="#notify">Join the waitlist</a><a href="https://instagram.com/thebarebotany" target="_blank" rel="noopener noreferrer">Instagram ↗</a></div></div><div class="footer-bottom"><span>© 2026 Bare Botany. All rights reserved.</span><span>Crafting moments through flavor.</span></div></div></footer>
+  <script>
+    const progress = document.getElementById('progress');
+    function updateProgress() { const root=document.documentElement; const distance=root.scrollHeight-root.clientHeight; progress.style.width=(distance ? root.scrollTop/distance*100 : 0)+'%'; }
+    window.addEventListener('scroll',updateProgress,{passive:true});
+    updateProgress();
+    const revealEls=document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) { const observer=new IntersectionObserver(entries=>{ entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.classList.add('in'); observer.unobserve(entry.target); } }); },{threshold:.08}); revealEls.forEach(el=>observer.observe(el)); window.addEventListener('load',()=>setTimeout(()=>revealEls.forEach(el=>el.classList.add('in')),2200)); } else { revealEls.forEach(el=>el.classList.add('in')); }
+    const WAITLIST_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzpfvwtYZkGsv8nn3HugYeXOAheBzcZBKvjoOyuJMqo6pD0OQu61xXvwRukHvfJ1Upg/exec';
+
+    const wlForm = document.getElementById('waitlistForm');
+    const wlBtn  = document.getElementById('waitlistBtn');
+    const wlNote = document.getElementById('waitlistNote');
+    const wlInput = document.getElementById('wlInput');
+    const wlCode = document.getElementById('wlCode');
+    let wlSubmitting = false;
+
+    // Full country dial-code list [ISO, name, dialCode]. India first (default).
+    const WL_COUNTRIES = [
+      ["IN","India","91"],["AF","Afghanistan","93"],["AL","Albania","355"],["DZ","Algeria","213"],
+      ["AD","Andorra","376"],["AO","Angola","244"],["AG","Antigua & Barbuda","1"],["AR","Argentina","54"],
+      ["AM","Armenia","374"],["AU","Australia","61"],["AT","Austria","43"],["AZ","Azerbaijan","994"],
+      ["BS","Bahamas","1"],["BH","Bahrain","973"],["BD","Bangladesh","880"],["BB","Barbados","1"],
+      ["BY","Belarus","375"],["BE","Belgium","32"],["BZ","Belize","501"],["BJ","Benin","229"],
+      ["BT","Bhutan","975"],["BO","Bolivia","591"],["BA","Bosnia & Herzegovina","387"],["BW","Botswana","267"],
+      ["BR","Brazil","55"],["BN","Brunei","673"],["BG","Bulgaria","359"],["BF","Burkina Faso","226"],
+      ["BI","Burundi","257"],["KH","Cambodia","855"],["CM","Cameroon","237"],["CA","Canada","1"],
+      ["CV","Cape Verde","238"],["CF","Central African Rep.","236"],["TD","Chad","235"],["CL","Chile","56"],
+      ["CN","China","86"],["CO","Colombia","57"],["KM","Comoros","269"],["CG","Congo","242"],
+      ["CD","Congo (DRC)","243"],["CR","Costa Rica","506"],["CI","Côte d’Ivoire","225"],["HR","Croatia","385"],
+      ["CU","Cuba","53"],["CY","Cyprus","357"],["CZ","Czechia","420"],["DK","Denmark","45"],
+      ["DJ","Djibouti","253"],["DM","Dominica","1"],["DO","Dominican Rep.","1"],["EC","Ecuador","593"],
+      ["EG","Egypt","20"],["SV","El Salvador","503"],["GQ","Equatorial Guinea","240"],["ER","Eritrea","291"],
+      ["EE","Estonia","372"],["SZ","Eswatini","268"],["ET","Ethiopia","251"],["FJ","Fiji","679"],
+      ["FI","Finland","358"],["FR","France","33"],["GA","Gabon","241"],["GM","Gambia","220"],
+      ["GE","Georgia","995"],["DE","Germany","49"],["GH","Ghana","233"],["GR","Greece","30"],
+      ["GD","Grenada","1"],["GT","Guatemala","502"],["GN","Guinea","224"],["GW","Guinea-Bissau","245"],
+      ["GY","Guyana","592"],["HT","Haiti","509"],["HN","Honduras","504"],["HK","Hong Kong","852"],
+      ["HU","Hungary","36"],["IS","Iceland","354"],["ID","Indonesia","62"],["IR","Iran","98"],
+      ["IQ","Iraq","964"],["IE","Ireland","353"],["IL","Israel","972"],["IT","Italy","39"],
+      ["JM","Jamaica","1"],["JP","Japan","81"],["JO","Jordan","962"],["KZ","Kazakhstan","7"],
+      ["KE","Kenya","254"],["KI","Kiribati","686"],["KW","Kuwait","965"],["KG","Kyrgyzstan","996"],
+      ["LA","Laos","856"],["LV","Latvia","371"],["LB","Lebanon","961"],["LS","Lesotho","266"],
+      ["LR","Liberia","231"],["LY","Libya","218"],["LI","Liechtenstein","423"],["LT","Lithuania","370"],
+      ["LU","Luxembourg","352"],["MO","Macau","853"],["MG","Madagascar","261"],["MW","Malawi","265"],
+      ["MY","Malaysia","60"],["MV","Maldives","960"],["ML","Mali","223"],["MT","Malta","356"],
+      ["MH","Marshall Islands","692"],["MR","Mauritania","222"],["MU","Mauritius","230"],["MX","Mexico","52"],
+      ["FM","Micronesia","691"],["MD","Moldova","373"],["MC","Monaco","377"],["MN","Mongolia","976"],
+      ["ME","Montenegro","382"],["MA","Morocco","212"],["MZ","Mozambique","258"],["MM","Myanmar","95"],
+      ["NA","Namibia","264"],["NR","Nauru","674"],["NP","Nepal","977"],["NL","Netherlands","31"],
+      ["NZ","New Zealand","64"],["NI","Nicaragua","505"],["NE","Niger","227"],["NG","Nigeria","234"],
+      ["KP","North Korea","850"],["MK","North Macedonia","389"],["NO","Norway","47"],["OM","Oman","968"],
+      ["PK","Pakistan","92"],["PW","Palau","680"],["PS","Palestine","970"],["PA","Panama","507"],
+      ["PG","Papua New Guinea","675"],["PY","Paraguay","595"],["PE","Peru","51"],["PH","Philippines","63"],
+      ["PL","Poland","48"],["PT","Portugal","351"],["QA","Qatar","974"],["RO","Romania","40"],
+      ["RU","Russia","7"],["RW","Rwanda","250"],["KN","Saint Kitts & Nevis","1"],["LC","Saint Lucia","1"],
+      ["VC","Saint Vincent","1"],["WS","Samoa","685"],["SM","San Marino","378"],["ST","São Tomé & Príncipe","239"],
+      ["SA","Saudi Arabia","966"],["SN","Senegal","221"],["RS","Serbia","381"],["SC","Seychelles","248"],
+      ["SL","Sierra Leone","232"],["SG","Singapore","65"],["SK","Slovakia","421"],["SI","Slovenia","386"],
+      ["SB","Solomon Islands","677"],["SO","Somalia","252"],["ZA","South Africa","27"],["KR","South Korea","82"],
+      ["SS","South Sudan","211"],["ES","Spain","34"],["LK","Sri Lanka","94"],["SD","Sudan","249"],
+      ["SR","Suriname","597"],["SE","Sweden","46"],["CH","Switzerland","41"],["SY","Syria","963"],
+      ["TW","Taiwan","886"],["TJ","Tajikistan","992"],["TZ","Tanzania","255"],["TH","Thailand","66"],
+      ["TL","Timor-Leste","670"],["TG","Togo","228"],["TO","Tonga","676"],["TT","Trinidad & Tobago","1"],
+      ["TN","Tunisia","216"],["TR","Türkiye","90"],["TM","Turkmenistan","993"],["TV","Tuvalu","688"],
+      ["UG","Uganda","256"],["UA","Ukraine","380"],["AE","United Arab Emirates","971"],["GB","United Kingdom","44"],
+      ["US","United States","1"],["UY","Uruguay","598"],["UZ","Uzbekistan","998"],["VU","Vanuatu","678"],
+      ["VA","Vatican City","39"],["VE","Venezuela","58"],["VN","Vietnam","84"],["YE","Yemen","967"],
+      ["ZM","Zambia","260"],["ZW","Zimbabwe","263"]
+    ];
+    // Flag emoji from ISO code (regional-indicator letters).
+    function wlFlag(iso) {
+      return iso.replace(/./g, c => String.fromCodePoint(127397 + c.charCodeAt(0)));
+    }
+    // Expected NATIONAL number length (digits after the country code), by ISO.
+    // A number = exact; [min,max] = range. Unlisted countries fall back to WL_NSN_DEFAULT.
+    const WL_NSN = {
+      IN:10, US:10, CA:10, GB:10, AE:9, AU:9, SG:8, NZ:[8,10], MY:[9,10], BD:10,
+      PK:10, LK:9, NP:10, CN:11, HK:8, JP:[10,11], KR:[9,10], SA:9, QA:8, KW:8,
+      BH:8, OM:8, DE:[10,11], FR:9, IT:10, ES:9, PT:9, NL:9, BE:[8,9], CH:9,
+      AT:[10,11], SE:[7,9], NO:8, DK:8, FI:[9,10], IE:9, PL:9, RU:10, UA:9, TR:10,
+      ZA:9, NG:10, KE:9, EG:10, BR:11, MX:10, AR:10, CL:9, CO:10, PE:9,
+      ID:[9,11], PH:10, VN:[9,10], TH:9, GR:10, CZ:9, RO:9, HU:9, IL:9
+    };
+    const WL_NSN_DEFAULT = [6, 12];
+
+    WL_COUNTRIES.forEach(([iso, name, dial]) => {
+      const o = document.createElement('option');
+      o.value = '+' + dial;
+      o.textContent = wlFlag(iso) + ' +' + dial;
+      o.title = name + ' (+' + dial + ')';
+      o.dataset.iso = iso;
+      o.dataset.name = name;
+      wlCode.appendChild(o);
+    });
+    wlCode.value = '+91'; // default India
+
+    function wlExpected(iso) {
+      const spec = WL_NSN[iso] || WL_NSN_DEFAULT;
+      return Array.isArray(spec) ? spec : [spec, spec];
+    }
+
+    // Does the current text look like a phone number (not an email)?
+    function looksLikePhone(v) {
+      const s = v.trim();
+      if (s === '') return false;
+      if (s.indexOf('@') !== -1) return false;         // it's heading toward an email
+      return /^[+\d][\d\s().\-]*$/.test(s);            // starts with + or a digit
+    }
+
+    // Show the country-code dropdown only while a phone is being entered.
+    function updateCodeVisibility() {
+      const phone = looksLikePhone(wlInput.value);
+      // If the user typed their own +code, hide the picker (they're explicit).
+      const explicitPlus = wlInput.value.trim().charAt(0) === '+';
+      wlCode.hidden = !phone || explicitPlus;
+      wlInput.placeholder = phone ? 'Your phone number' : 'Enter your email or phone number';
+    }
+    wlInput.addEventListener('input', updateCodeVisibility);
+
+    // Build the final contact string + type. For phones, prepend the chosen
+    // country code and validate the national-number length for that country.
+    function classifyContact(raw) {
+      const value = raw.trim();
+      const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+      if (emailRe.test(value)) return { type: 'email', value: value };
+
+      if (looksLikePhone(value)) {
+        const explicitPlus = value.charAt(0) === '+';
+        // National digits the user typed (strip formatting).
+        let national = value.replace(/[\s().\-]/g, '');
+        let dial, iso, name;
+
+        if (explicitPlus) {
+          // User typed their own +code - match it to a known country (longest code wins).
+          const digits = national.replace(/^\+/, '');
+          const opts = [...wlCode.options].sort((a,b) => b.value.length - a.value.length);
+          const match = opts.find(o => ('+' + digits).startsWith(o.value));
+          if (!match) return { type: null, value: value, reason: 'bad_phone' };
+          dial = match.value; iso = match.dataset.iso; name = match.dataset.name;
+          national = digits.slice(dial.length - 1); // remove the code portion
+        } else {
+          const opt = wlCode.selectedOptions[0];
+          dial = wlCode.value; iso = opt.dataset.iso; name = opt.dataset.name;
+        }
+
+        if (!/^\d+$/.test(national)) return { type: null, value: value, reason: 'bad_phone' };
+
+        const [min, max] = wlExpected(iso);
+        if (national.length < min || national.length > max) {
+          const need = (min === max) ? (min + ' digits') : (min + '–' + max + ' digits');
+          return { type: null, value: value, reason: 'bad_length', need: need, country: name };
+        }
+
+        return { type: 'phone', value: dial + national };
+      }
+
+      return { type: null, value: value };
+    }
+
+    wlForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (wlSubmitting) return;
+
+      const info = classifyContact(wlInput.value);
+      const { type, value, reason, need, country } = info;
+      if (!type) {
+        if (reason === 'bad_length') {
+          wlNote.textContent = country + ' numbers should be ' + need + '. Please check and try again.';
+        } else if (reason === 'bad_phone') {
+          wlNote.textContent = 'Please enter a valid phone number.';
+        } else {
+          wlNote.textContent = 'Please enter a valid email address or phone number.';
+        }
+        wlInput.focus();
+        return;
+      }
+
+      // Not configured yet - fail loudly in console, gracefully to the user.
+      if (!WAITLIST_ENDPOINT || WAITLIST_ENDPOINT.indexOf('PASTE_YOUR') === 0) {
+        wlNote.textContent = 'Waitlist isn’t connected yet. (Add your Apps Script URL.)';
+        console.warn('WAITLIST_ENDPOINT is not set - see the instructions in the <script> block.');
+        return;
+      }
+
+      wlSubmitting = true;
+      wlBtn.disabled = true;
+      const originalLabel = wlBtn.textContent;
+      wlBtn.textContent = 'Joining…';
+      wlNote.textContent = '';
+
+      // Apps Script doesn't send CORS headers, so read its JSONP response.
+      // A credentialless frame keeps a visitor's Google sign-in cookies from
+      // redirecting the public web app to a broken /macros/u/N/ URL.
+      let settled = false;
+      const finish = (ok, res) => {
+        if (settled) return;
+        settled = true;
+        cleanup();
+        if (ok && res && res.duplicate) {
+          wlForm.reset();
+          updateCodeVisibility();
+          wlNote.textContent = 'You’re already on the list - we’ll be in touch. 🌿';
+          wlBtn.textContent = 'Added ✓';
+        } else if (ok && res && res.ok) {
+          wlForm.reset();
+          updateCodeVisibility();
+          wlNote.textContent = 'Thank you - you’re on the list. We’ll be in touch.';
+          wlBtn.textContent = 'Added ✓';
+        } else {
+          wlNote.textContent = (res && res.error === 'invalid_contact')
+            ? 'Please enter a valid email address or phone number.'
+            : 'Something went wrong - please try again.';
+          wlBtn.textContent = originalLabel;
+          wlBtn.disabled = false;
+          wlSubmitting = false;
+        }
+      };
+
+      const cbName = 'wlcb_' + Date.now() + '_' + Math.random().toString(36).slice(2);
+      const token = cbName;
+      let timer;
+      let script;
+      let frame;
+      function cleanup() {
+        clearTimeout(timer);
+        window.removeEventListener('message', onFrameMessage);
+        delete window[cbName];
+        if (script && script.parentNode) script.parentNode.removeChild(script);
+        if (frame && frame.parentNode) frame.parentNode.removeChild(frame);
+      }
+      function onFrameMessage(event) {
+        if (!frame || event.source !== frame.contentWindow ||
+            !event.data || event.data.token !== token) return;
+        finish(!event.data.error, event.data.response || null);
+      }
+
+      const params = new URLSearchParams({
+        callback: cbName,
+        contact: value,
+        type: type,                                  // 'email' or 'phone'
+        source: 'bare-botany-waitlist',
+        page: location.href,
+        ts: new Date().toISOString()
+      });
+      const requestUrl = WAITLIST_ENDPOINT + '?' + params.toString();
+      timer = setTimeout(() => finish(false, null), 12000); // network fallback
+      if ('credentialless' in document.createElement('iframe')) {
+        frame = document.createElement('iframe');
+        frame.setAttribute('credentialless', '');
+        frame.setAttribute('sandbox', 'allow-scripts');
+        frame.hidden = true;
+        const frameCode =
+          'window.' + cbName + ' = function(response) {' +
+          'parent.postMessage({token:' + JSON.stringify(token) + ',response:response},"*");' +
+          '};' +
+          'var script=document.createElement("script");' +
+          'script.src=' + JSON.stringify(requestUrl) + ';' +
+          'script.onerror=function(){parent.postMessage({token:' + JSON.stringify(token) + ',error:true},"*");};' +
+          'document.head.appendChild(script);';
+        frame.srcdoc = '<!doctype html><script>' + frameCode + '<\/script>';
+        window.addEventListener('message', onFrameMessage);
+        document.body.appendChild(frame);
+      } else {
+        // Older browsers can still use the public JSONP endpoint directly.
+        script = document.createElement('script');
+        window[cbName] = (res) => finish(true, res);
+        script.src = requestUrl;
+        script.onerror = () => finish(false, null);
+        document.body.appendChild(script);
+      }
+    });
+  </script>
+</body>
+</html>
