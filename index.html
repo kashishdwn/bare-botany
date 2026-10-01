@@ -139,6 +139,17 @@
     @media(max-width:760px) { .container { width:min(100% - 40px,600px); } .announcement { font-size:.53rem; letter-spacing:.17em; } .header-inner { min-height:69px; } .brand img { width:36px; height:36px; } .brand-name { font-size:1.29rem; } .header-links { display:none; } .header-action { padding:11px 12px; font-size:.56rem; } .hero { grid-template-columns:1fr; } .hero-copy { padding:75px 20px 55px; text-align:left; } .hero h1 { font-size:clamp(4.5rem,13.8vw,6.8rem); max-width:620px; } .hero-foot { margin-top:48px; } .hero-media { height:570px; min-height:0; } .values-inner { grid-template-columns:1fr; } .value { min-height:85px; border-left:0; border-top:1px solid #d4c9b8; padding:18px 0; } .value:first-child { border-top:0; padding-left:0; } .collection { padding:85px 0; } .section-head { display:block; } .section-head p { margin-top:20px; } .product-grid { grid-template-columns:1fr; max-width:520px; margin:auto; gap:20px; } .product-image { height:370px; } .story { grid-template-columns:1fr; } .story-image { min-height:0; height:450px; } .story-copy { padding:80px 20px; } .promise { padding:75px 0; } .promise-inner { grid-template-columns:1fr; gap:37px; } .waitlist { padding:85px 0; } .waitlist-inner { grid-template-columns:1fr; gap:36px; } .footer-main { grid-template-columns:1fr 1fr; gap:40px; } .footer-brand { grid-column:1/-1; } }
     @media(max-width:760px) { .product-card,.product-card:nth-child(4),.product-card:nth-child(5) { grid-column:1; } }
     @media(max-width:440px) { .container { width:calc(100% - 34px); } .brand-name { font-size:1.12rem; } .brand { gap:8px; } .header-action { font-size:.5rem; letter-spacing:.08em; } .hero-copy { padding:65px 17px 48px; } .hero h1 { font-size:clamp(4.05rem,15vw,5.5rem); } .hero-intro { font-size:.83rem; } .hero-media { height:440px; } .image-caption { right:17px; bottom:18px; } .section-head h2 { font-size:3.8rem; } .product-image { height:320px; } .story-image { height:330px; } .story h2,.waitlist h2 { font-size:4.2rem; } .signup { flex-wrap:wrap; } .signup input { flex-basis:100%; height:48px; } .wl-code { height:42px; } .signup button { flex:1; height:46px; } .footer-main { gap:30px; } .footer-bottom { flex-direction:column; } }
+    @media(max-width:900px) { .header-links { display:none; } }
+    @media(max-width:360px) {
+      .header-inner { gap:8px; }
+      .brand { gap:6px; }
+      .brand img { width:30px; height:30px; }
+      .brand-name { font-size:1rem; letter-spacing:.04em; }
+      .header-action { padding:9px 7px; font-size:.47rem; letter-spacing:.03em; }
+      .hero h1 { font-size:clamp(3.5rem,16vw,4.05rem); }
+      .section-head h2 { font-size:3.3rem; }
+      .story h2,.waitlist h2 { font-size:3.65rem; }
+    }
     @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { animation-duration:.01ms!important; transition-duration:.01ms!important; } .reveal { opacity:1; transform:none; } }
   </style>
 </head>
